@@ -1,70 +1,123 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# **Onboarding Funnel App**
 
-## Available Scripts
+A modern onboarding funnel application with a backend to track user interactions and a React-powered frontend for a seamless user experience. Follow these steps to run the app locally on your machine.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## **How to Run the App Locally**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### **1. Clone the Repository**
+```bash
+git clone https://github.com/bibi-elene/onboarding-funnel.git
+cd onboarding-funnel
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+### **2. Start the Backend**
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+2. Install dependencies (if not already done):
+   ```bash
+   npm install
+   ```
+3. Start the backend server:
+   ```bash
+   npm start
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   - The backend will run at: `http://localhost:5001` (you can check API data at localhost:5001/metrics)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **3. Start the Frontend**
+1. Go back to the root directory (onboarding-funnel):
+   ```bash
+   cd ..
+   ```
+2. Install frontend dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the React development server:
+   ```bash
+   npm start
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   - The frontend will run at: `http://localhost:3000`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+### **4. (Optional) Create a New SQLite Database**
+If you need to reset or create a new database:
+1. Open a terminal in the backend directory:
+   ```bash
+   cd backend
+   ```
+2. Run the following command to create a new SQLite database file:
+   ```bash
+   sqlite3 database.db
+   ```
+3. Exit SQLite CLI by typing `.exit`.
+4. Restart the backend server to reinitialize the database:
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## **Overview of the App**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### **Features**
+- **Multi-step Onboarding**: A 3-step onboarding process with video-guided steps.
+- **User Tracking**: Tracks actions like `visited`, `started`, and `completed` via the backend.
+- **Dashboard**: A graphical representation of user metrics.
+- **Database**: Persistent storage using SQLite.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### **Tech Stack**
+- **Frontend**: React
+- **Backend**: Express.js
+- **Database**: SQLite
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## **Project Structure**
+```
+onboarding-funnel/
+├── backend/          # Backend server (Express.js)
+├── src/  Frontend code
+├── package.json/ # Frontend packages  
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## **Key Commands**
+### Start the Backend:
+```bash
+cd backend
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Start the Frontend:
+```bash
+cd ..
+npm start
+```
 
-### Analyzing the Bundle Size
+### Create a New SQLite Database:
+```bash
+sqlite3 database.db 
+# view db tables
+.tables
+# view data in users
+SELECT * from users;
+.exit
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Restart the backend server after creating the database:
+```bash
+npm start
+```
