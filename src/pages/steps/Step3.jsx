@@ -1,10 +1,33 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Step3 = () => {
   const navigate = useNavigate();
+
+  const handleComplete = async () => {
+    const userId = Cookies.get("user_id");
+    if (!userId) return; // Ensure user_id exists
+
+    // Check if the user has already completed onboarding
+    const alreadyCompleted = Cookies.get("completed");
+    if (!alreadyCompleted) {
+      Cookies.set("completed", "true", { expires: 7 }); // Mark as completed
+
+      // Send "completed" action to backend
+      await fetch("http://localhost:5001/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId, action: "completed" }),
+      }).catch((err) => console.error("Error tracking completed:", err));
+    }
+
+    navigate("/");
+  };
+
   return (
     <div className="container d-flex align-items-center vh-100 bg-light">
+      {/* Paragraph Section */}
       <div
         className="col-md-4 text-start text-muted px-4"
         style={{ fontWeight: "400", lineHeight: "1.6" }}
@@ -15,8 +38,9 @@ const Step3 = () => {
           reflect you.
         </p>
       </div>
+      {/* Video and Heading Section */}
       <div className="col-md-8 text-center">
-        <h2 className="mb-4">Explore 100+ Styles</h2>
+        <h2 className="mb-3">Explore 100+ Styles</h2>
         <div
           className="video-container mb-4 rounded shadow"
           style={{ width: "500px", height: "650px", overflow: "hidden" }}
@@ -38,14 +62,13 @@ const Step3 = () => {
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="d-flex me-5 my-5">
-          <button
-            className="btn btn-success btn-lg px-5"
-            onClick={() => navigate("/")}
-          >
-            Complete
-          </button>
-        </div>
+        <button
+          className="btn btn-success btn-lg px-3 mt-4"
+          style={{ fontWeight: "500" }}
+          onClick={handleComplete}
+        >
+          Complete
+        </button>
       </div>
     </div>
   );

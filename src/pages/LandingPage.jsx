@@ -1,18 +1,41 @@
-import React from 'react';
+import React, { useEffect } from "react";
+import Cookies from "js-cookie";
+import "../styles/landing.scss";
 
 export const LandingPage = () => {
-  const startOnboarding = () => {
-    window.location.href = '/onboarding';
+  useEffect(() => {
+    const userId = Cookies.get("user_id") || generateUserId();
+    Cookies.set("user_id", userId, { expires: 7 });
+
+    // Check if the user has already been marked as visited
+    const alreadyVisited = Cookies.get("visited");
+    if (!alreadyVisited) {
+      Cookies.set("visited", "true", { expires: 7 }); // Mark as visited
+
+      // Send "visited" action to the backend
+      fetch("http://localhost:5001/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId, action: "visited" }),
+      }).catch((err) => console.error("Error tracking visit:", err));
+    }
+  }, []);
+
+  const generateUserId = () => {
+    return Math.random().toString(36).substring(2, 15); // Simple random string
   };
 
   return (
-    <div className="page-container d-flex flex-column justify-content-center align-items-center vh-100 bg-light">
-      <h1 className="display-4 mb-5">Onboarding To GlamAI</h1>
-      <button className="btn btn-dark btn-lg" onClick={startOnboarding}>
+    <div className="container text-center vh-100 d-flex flex-column justify-content-center align-items-center">
+      <h1 style={{ fontFamily: "Inter" }} className="mb-5">
+        Let's onboard with GlamAI.
+      </h1>
+      <a href="/onboarding/step1" className="btn btn-primary btn-lg">
         Get Started
-      </button>
+      </a>
+      <a href="/dashboard" className="btn mt-3 btn-lg m-2" style={{border: "1px solid black"}}>
+        View Dashboard
+      </a>
     </div>
   );
 };
-
-export default LandingPage;
