@@ -8,6 +8,7 @@ import {
 import { LandingPage } from "./pages/LandingPage";
 import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
+import './styles/index.scss';
 
 const App = () => {
   return (

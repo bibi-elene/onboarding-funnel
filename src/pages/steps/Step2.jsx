@@ -8,7 +8,7 @@ const Step2 = () => {
     <div className="container d-flex align-items-center vh-100 bg-light">
       <ReturnButton />
       <div
-        className="col-md-4 text-start text-muted px-4"
+        className="col-md-4 text-start text-muted px-4 d-none d-md-block"
         style={{ fontWeight: "400", lineHeight: "1.6" }}
       >
         <p>
@@ -18,15 +18,18 @@ const Step2 = () => {
         </p>
       </div>
       <div className="col-md-8 text-center">
-        <h2 className="mb-4">Match Your Aesthetic</h2>
+        <h2 className="mb-2 pt-3 pb-md-0 mb-md-4 fs-3 text-md-start text-end">
+          Match <br /> Your <br /> Aesthetic
+        </h2>
         <div
           className="video-container mb-4 rounded shadow"
-          style={{ width: "500px", height: "650px", overflow: "hidden" }}
+          style={{ maxWidth: "500px", maxHeight: "650px", overflow: "hidden" }}
         >
           <video
             autoPlay
             loop
             muted
+            className="w-100 h-auto"
             style={{
               width: "100%",
               height: "100%",

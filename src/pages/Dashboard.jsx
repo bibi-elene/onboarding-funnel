@@ -83,7 +83,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 pt-4">
       <ReturnButton />
       <h1 className="text-center mb-4">Dashboard</h1>
       <div className="chart-container" style={{ width: "80%", margin: "0 auto" }}>

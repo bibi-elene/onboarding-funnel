@@ -6,7 +6,7 @@ const ReturnButton = () => {
 
   return (
     <button
-      className="btn btn-outline-primary position-absolute top-0 start-0 m-3"
+      className="btn btn-outline-dark position-absolute top-0 start-0 m-3"
       onClick={() => navigate(-1)} // Navigate to the previous page
       style={{ zIndex: 10 }}
     >

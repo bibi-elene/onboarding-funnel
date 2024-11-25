@@ -30,10 +30,10 @@ export const LandingPage = () => {
       <h1 style={{ fontFamily: "Inter" }} className="mb-5">
         Let's onboard with GlamAI.
       </h1>
-      <a href="/onboarding/step1" className="btn btn-primary btn-lg">
+      <a href="/onboarding/step1" className="btn btn-lg px-5 btn-outline-primary">
         Get Started
       </a>
-      <a href="/dashboard" className="btn mt-3 btn-lg m-2" style={{border: "1px dotted grey"}}>
+      <a href="/dashboard" className="btn mt-3 btn-lg px-4 btn-outline-secondary">
         View Dashboard
       </a>
     </div>
