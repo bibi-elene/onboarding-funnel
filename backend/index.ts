@@ -5,14 +5,23 @@ const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
 
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
 
-const db = new sqlite3.Database("database.db"); // Use file-based database
+// Get the database path from the environment variable or use the local fallback
+const dbPath = process.env.DATABASE_URL ? process.env.DATABASE_URL.replace("sqlite://", "") : "database.db";
+const db = new sqlite3.Database(dbPath, (err) => {
+  if (err) {
+    console.error("Failed to connect to the database:", err.message);
+  } else {
+    console.log("Connected to the SQLite database.");
+  }
+});
 
+// Initialize database table
 db.serialize(() => {
   db.run(
     `CREATE TABLE IF NOT EXISTS users (

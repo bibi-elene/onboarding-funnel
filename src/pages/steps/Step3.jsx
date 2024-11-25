@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import ReturnButton from "../../components/ReturnButton";
 
 const Step3 = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Step3 = () => {
 
   return (
     <div className="container d-flex align-items-center vh-100 bg-light">
-      {/* Paragraph Section */}
+      <ReturnButton />
       <div
         className="col-md-4 text-start text-muted px-4"
         style={{ fontWeight: "400", lineHeight: "1.6" }}

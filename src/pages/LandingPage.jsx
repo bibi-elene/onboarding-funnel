@@ -33,7 +33,7 @@ export const LandingPage = () => {
       <a href="/onboarding/step1" className="btn btn-primary btn-lg">
         Get Started
       </a>
-      <a href="/dashboard" className="btn mt-3 btn-lg m-2" style={{border: "1px solid black"}}>
+      <a href="/dashboard" className="btn mt-3 btn-lg m-2" style={{border: "1px dotted grey"}}>
         View Dashboard
       </a>
     </div>

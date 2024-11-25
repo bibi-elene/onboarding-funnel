@@ -1,11 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import ReturnButton from "../../components/ReturnButton";
 
 const Step2 = () => {
   const navigate = useNavigate();
   return (
     <div className="container d-flex align-items-center vh-100 bg-light">
-      <div className="col-md-4 text-start text-muted px-4" style={{ fontWeight: "400", lineHeight: "1.6" }}>
+      <ReturnButton />
+      <div
+        className="col-md-4 text-start text-muted px-4"
+        style={{ fontWeight: "400", lineHeight: "1.6" }}
+      >
         <p>
           Share your preferences and let Glam curate a personalized style for
           you. Whether you love minimalism, bold statements, or classic
@@ -14,7 +19,10 @@ const Step2 = () => {
       </div>
       <div className="col-md-8 text-center">
         <h2 className="mb-4">Match Your Aesthetic</h2>
-        <div className="video-container mb-4 rounded shadow" style={{ width: "500px", height: "650px", overflow: "hidden" }}>
+        <div
+          className="video-container mb-4 rounded shadow"
+          style={{ width: "500px", height: "650px", overflow: "hidden" }}
+        >
           <video
             autoPlay
             loop
